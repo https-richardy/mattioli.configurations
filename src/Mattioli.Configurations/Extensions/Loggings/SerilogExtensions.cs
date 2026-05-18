@@ -12,7 +12,7 @@ namespace Mattioli.Configurations.Extensions.Loggings
     {
         public static IApplicationBuilder UseRequestContextLogging(this IApplicationBuilder app)
         {
-            app.UseMiddleware<RequestContextLoggingMiddleware>();
+            app.UseMiddleware<RequestCorrelationIdEnrichmentMiddleware>();
             app.UseSerilogRequestLogging(options =>
             {
                 options.GetLevel = (httpContext, elapsed, ex) =>

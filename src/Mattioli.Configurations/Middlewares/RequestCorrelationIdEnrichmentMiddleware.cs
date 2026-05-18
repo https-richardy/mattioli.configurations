@@ -4,7 +4,7 @@ using Serilog.Context;
 
 namespace Mattioli.Configurations.Middlewares
 {
-    public class RequestContextLoggingMiddleware(RequestDelegate next)
+    public class RequestCorrelationIdEnrichmentMiddleware(RequestDelegate next)
     {
         private const string CorrelationIdHeaderName = "X-Correlation-Id";
         private readonly RequestDelegate _next = next;
@@ -12,6 +12,8 @@ namespace Mattioli.Configurations.Middlewares
         public Task Invoke(HttpContext context)
         {
             string correlationId = GetCorrelationId(context);
+
+            context.Request.Headers[CorrelationIdHeaderName] = correlationId;
 
             using (LogContext.PushProperty("CorrelationId", correlationId))
             {
