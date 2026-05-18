@@ -4,7 +4,7 @@ using Serilog.Context;
 
 namespace Mattioli.Configurations.Middlewares
 {
-    public class RequestCorrelationIdEnrichmentMiddleware(RequestDelegate next)
+    public class CorrelationIdEnrichmentMiddleware(RequestDelegate next)
     {
         private const string CorrelationIdHeaderName = "X-Correlation-Id";
         private readonly RequestDelegate _next = next;
