@@ -1,5 +1,4 @@
 using Mattioli.Configurations.Extensions.Loggings;
-using Mattioli.Configurations.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Serilog;

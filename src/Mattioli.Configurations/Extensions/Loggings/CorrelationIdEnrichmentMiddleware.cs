@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Primitives;
 using Serilog.Context;
 
-namespace Mattioli.Configurations.Middlewares
+namespace Mattioli.Configurations.Extensions.Loggings
 {
     public class CorrelationIdEnrichmentMiddleware(RequestDelegate next)
     {
