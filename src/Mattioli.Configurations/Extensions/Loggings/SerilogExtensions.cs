@@ -1,5 +1,4 @@
 using Mattioli.Configurations.Extensions.Loggings;
-using Mattioli.Configurations.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Serilog;
@@ -12,7 +11,7 @@ namespace Mattioli.Configurations.Extensions.Loggings
     {
         public static IApplicationBuilder UseRequestContextLogging(this IApplicationBuilder app)
         {
-            app.UseMiddleware<RequestContextLoggingMiddleware>();
+            app.UseMiddleware<CorrelationIdEnrichmentMiddleware>();
             app.UseSerilogRequestLogging(options =>
             {
                 options.GetLevel = (httpContext, elapsed, ex) =>
